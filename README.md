@@ -14,7 +14,7 @@ https://github.com/swttech2017/qa-portal-services/blob/master/README.md
 
 a) Clone the qa-portal-angular repo using command
 
-https://github.com/swttech2017/qa-portal-angular.git
+git clone https://github.com/swttech2017/qa-portal-angular.git
 
 b) From the base project folder install dependencies using npm
 
