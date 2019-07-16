@@ -20,9 +20,9 @@
         </mat-icon>
       </button>
       <mat-menu #acct_menu="matMenu">
-        <ng-container>
-          <a routerLink="/qa/portal/home/view" (click)="logout()" mat-menu-item>Logout</a>
-        </ng-container>
+        <button (click)="logout()" mat-menu-item>
+          Logout
+        </button>
       </mat-menu>
     </span>
   </mat-toolbar-row>

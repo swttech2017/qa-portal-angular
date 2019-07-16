@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {ApplicationSelectionService} from '../../_services/application-selection.service';
+import {ApplicationSelectionService} from '../../_common/services/application-selection.service';
 import {Subscription} from 'rxjs';
-import {Application} from '../../_models/application';
+import {Application} from '../../_common/models/application';
 
 @Component({
   selector: 'app-portal-side-menu-content',
@@ -24,6 +24,8 @@ export class PortalSideMenuContentComponent implements OnInit, OnDestroy {
     this.applicationSelectionSubscription
       = this.applicationSelectionService.getSelectedApplication$()
                                                   .subscribe(app => {
+                                                    console.log('Got selected app ');
+                                                    console.log(app);
                                                     this.selectedApplication = app;
                                                   });
   }

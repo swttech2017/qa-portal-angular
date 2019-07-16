@@ -5,14 +5,15 @@ import {HomeViewComponent} from './home-view/home-view.component';
 
 const routes: Routes = [
   {
-    path: 'qa/portal/home',
+    path: 'view',
     component: AppComponent,
     children: [
       {
-        path: 'view', component: HomeViewComponent
+        path: '',
+        component: HomeViewComponent
       }
     ]
-  }
+  },
 ];
 
 @NgModule({

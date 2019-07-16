@@ -4,8 +4,13 @@ import {AppComponent} from './app.component';
 
 const routes: Routes = [
   {
-    path: 'qa/portal/training/trainee/feedback/home',
-    component: AppComponent
+    path: 'trainee/feedback',
+    children: [
+      {
+        path: 'home',
+        component: AppComponent
+      }
+    ]
   }
 ];
 

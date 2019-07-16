@@ -35,10 +35,13 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { RatedQuestionComponent } from './rated-question/rated-question.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RatedQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { AppComponent } from './app.component';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
@@ -110,7 +114,9 @@ import { AppComponent } from './app.component';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    RatedQuestionComponent,
+    ReactiveFormsModule
   ]
 })
 export class QaCommonModule { }

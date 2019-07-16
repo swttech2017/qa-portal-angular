@@ -1,11 +1,18 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ScheduleHomeComponent} from './schedule-home/schedule-home.component';
+import {AppComponent} from './app.component';
 
 const routes: Routes = [
   {
-    path: 'qa/portal/training/trainer/schedule/home',
-    component: ScheduleHomeComponent
+    path: 'trainer/schedule',
+    component: AppComponent,
+    children: [
+      {
+        path: 'home',
+        component: ScheduleHomeComponent
+      }
+    ]
   }
 ];
 

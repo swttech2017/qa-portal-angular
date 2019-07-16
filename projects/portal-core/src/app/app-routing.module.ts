@@ -9,24 +9,33 @@ import {ErrorViewComponent} from './error-view/error-view.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'qa/portal/home',
     loadChildren: () => PortalHomeSharedModule
   },
   {
-    path: 'feedback',
+    path: 'qa/portal/training',
     loadChildren: () => TraineeFeedbackSharedModule
   },
   {
-    path: 'reflection',
+    path: 'qa/portal/training',
     loadChildren: () => TraineeReflectionSharedModule
   },
   {
-    path: 'schedule',
+    path: 'qa/portal/training',
     loadChildren: () => TrainerSchedulingSharedModule
   },
   {
-    path: 'apartment',
+    path: 'qa/portal/hr',
     loadChildren: () => ApartmentMngmtSharedModule
+  },
+  {
+    path: 'qa',
+    children: [
+      {path: '**', redirectTo: '/qa/portal/home/view'}
+    ]
+  },
+  {
+    path: '', redirectTo: '/qa/portal/home/view', pathMatch: 'prefix'
   },
   {
     path: '**',

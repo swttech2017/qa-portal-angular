@@ -1,6 +1,6 @@
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {PORTAL_APPLICATIONS_API} from '../_models/portal-constants';
+import {PORTAL_APPLICATIONS_API} from '../models/portal-constants';
 import {Injectable} from '@angular/core';
 
 @Injectable()

@@ -10,7 +10,7 @@ b) An instance of core-api services are running locally. See instructions in
 https://github.com/swttech2017/qa-portal-services/blob/master/README.md
 
 
-**Build and Run Qa Portal**
+**Build and Run QA Portal**
 
 a) Clone the qa-portal-angular repo using command
 

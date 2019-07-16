@@ -1,8 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeViewComponent } from './home-view/home-view.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HomeViewComponent} from './home-view/home-view.component';
+import {QaCommonModule} from '../../../qa-common/src/app/app.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { HomeViewComponent } from './home-view/home-view.component';
     HomeViewComponent
   ],
   imports: [
-    BrowserModule,
+    QaCommonModule,
     AppRoutingModule
   ],
   providers: [],
@@ -19,7 +19,7 @@ import { HomeViewComponent } from './home-view/home-view.component';
 export class AppModule { }
 
 @NgModule({})
-export class PortalHomeSharedModule{
+export class PortalHomeSharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AppModule,

@@ -6,11 +6,11 @@
   <mat-drawer-content>
     <main>
       <div *ngIf="!openedDrawer">
-        <button style="color: #0060B9;" type="button" mat-icon-button (click)="setOpened(true)">
+        <button style="color: #0060B9; margin-top: 10px;" type="button" mat-icon-button (click)="setOpened(true)">
           <mat-icon>menu</mat-icon>
         </button>
       </div>
-      <div style="margin: 15px">
+      <div style="margin: 15px; width: 100%;">
         <router-outlet></router-outlet>
       </div>
     </main>

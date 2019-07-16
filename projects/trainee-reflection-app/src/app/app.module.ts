@@ -1,18 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
 import {ModuleWithProviders, NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {SelfReflectionFormComponent} from './self-reflection-form/self-reflection-form.component';
+import {QaCommonModule} from '../../../qa-common/src/app/app.module';
+import {RatedQuestionsService} from './self-reflection-form/services/rated-questions.service';
+import { SelfReflectionHistoryComponent } from './self-reflection-history/self-reflection-history.component';
+import {SelfReflectionHistoryService} from './self-reflection-history/services/self-reflection-history.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SelfReflectionFormComponent,
+    SelfReflectionHistoryComponent
   ],
   imports: [
-    BrowserModule,
+    QaCommonModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RatedQuestionsService, SelfReflectionHistoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

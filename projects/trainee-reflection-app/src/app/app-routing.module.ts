@@ -1,11 +1,17 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
+import {SelfReflectionHistoryComponent} from './self-reflection-history/self-reflection-history.component';
 
 const routes: Routes = [
   {
-    path: 'qa/portal/training/trainee/self-rating/home',
-    component: AppComponent
+    path: 'trainee/self-rating',
+    component: AppComponent,
+    children: [
+      {
+        path: 'home', component: SelfReflectionHistoryComponent
+      }
+    ]
   }
 ];
 

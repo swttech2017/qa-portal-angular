@@ -4,7 +4,7 @@ import {AppComponent} from './app.component';
 
 const routes: Routes = [
   {
-    path: 'qa/portal/hr/apartment/management/home',
+    path: 'apartment/management/home',
     component: AppComponent,
   }
 ];
