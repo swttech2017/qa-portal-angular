@@ -1,9 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
-
 // Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCheckboxModule} from '@angular/material';
-import {MatButtonModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -34,9 +31,11 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { RatedQuestionComponent } from './rated-question/rated-question.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {AppComponent} from './app.component';
+import {RatedQuestionComponent} from './rated-question/rated-question.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -45,6 +44,7 @@ import {ReactiveFormsModule} from '@angular/forms';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
     MatCheckboxModule,
@@ -77,11 +77,19 @@ import {ReactiveFormsModule} from '@angular/forms';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot(
+      {
+        positionClass: 'toast-bottom-center',
+        closeButton: true,
+        timeOut: 7000
+      }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -119,4 +127,5 @@ import {ReactiveFormsModule} from '@angular/forms';
     ReactiveFormsModule
   ]
 })
-export class QaCommonModule { }
+export class QaCommonModule {
+}
