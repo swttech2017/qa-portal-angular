@@ -9,6 +9,5 @@ export class AppComponent implements OnInit{
   title = 'trainee-reflection-app';
 
   ngOnInit(): void {
-    console.log('In onInit for ' + this.title);
   }
 }
