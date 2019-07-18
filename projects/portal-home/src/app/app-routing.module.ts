@@ -1,19 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from './app.component';
-import {HomeViewComponent} from './home-view/home-view.component';
 
 const routes: Routes = [
   {
-    path: 'view',
+    path: '',
     component: AppComponent,
-    children: [
-      {
-        path: '',
-        component: HomeViewComponent
-      }
-    ]
-  },
+  }
 ];
 
 @NgModule({
