@@ -57,7 +57,8 @@ export class AppComponent implements OnInit, OnDestroy {
       });
     });
 
-    // Set the selected application to the home application
+    // If no application selected and we've completed the loading of the applications as part of application startup
+    // determine whether to navigate to home page or error page
     if (!appSelected &&
       this.portalApplications.length > 0 &&
       !currUrl.startsWith('/qa/portal/error')) {

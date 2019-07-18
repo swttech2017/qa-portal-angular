@@ -4,7 +4,6 @@ import {Subscription} from 'rxjs';
 import {ApplicationSelectionService} from '../_common/services/application-selection.service';
 import {Application} from '../_common/models/application';
 import {KeycloakService} from 'keycloak-angular';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-portal-header',
@@ -20,8 +19,7 @@ export class PortalHeaderComponent implements OnInit, OnDestroy {
 
   constructor(private menuService: MenuService,
               private applicationSelectionService: ApplicationSelectionService,
-              private keycloak: KeycloakService,
-              private router: Router) {
+              private keycloak: KeycloakService) {
   }
 
   ngOnInit() {

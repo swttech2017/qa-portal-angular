@@ -7,7 +7,6 @@ import {GET_ALL_RATED_QUESTIONS_API} from '../../_common/models/trainee-reflecti
 @Injectable()
 export class RatedQuestionsService {
   constructor(private httpClient: HttpClient) {
-
   }
 
   getSelfReflectionQuestions(): Observable<RatedQuestionModel[]> {

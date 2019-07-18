@@ -40,9 +40,6 @@ const routes: Routes = [
   },
   {
     path: '', redirectTo: '/qa/portal/home', pathMatch: 'full'
-  // },
-  // {
-  //   path: '**', redirectTo: '/qa/portal/home', pathMatch: 'full'
   }
 ];
 

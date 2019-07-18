@@ -25,14 +25,16 @@ export class QaErrorHandlerService {
 
   private processError(error: HttpErrorResponse): Observable<string> {
     if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
+      // A client-side or network error occurred. Display in an error toast.
       return throwError(error.error.message);
     } else {
       // The backend returned an unsuccessful response code.
       if (error.status === HttpStatus.INTERNAL_SERVER_ERROR) {
+        // Navigate to severe error page and pass the error message to be displayed
         this.router.navigate(['qa/portal/error', {errorMsg: error.error}]);
         return of('');
       } else {
+        // Display in an error toast.
         return throwError(error.error);
       }
     }

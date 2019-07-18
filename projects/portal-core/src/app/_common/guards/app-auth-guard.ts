@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { KeycloakService, KeycloakAuthGuard } from 'keycloak-angular';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, Router, RouterStateSnapshot} from '@angular/router';
+import {KeycloakAuthGuard, KeycloakService} from 'keycloak-angular';
 
 @Injectable()
 export class AppAuthGuard extends KeycloakAuthGuard {

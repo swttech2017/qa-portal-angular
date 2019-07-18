@@ -38,6 +38,7 @@ export class PortalSideMenuContentComponent implements OnInit, OnDestroy {
   }
 
   errorApp(): boolean {
+    // TODO - remove hard coding
     return this.selectedApplication.url === '/qa/portal/error';
   }
 }

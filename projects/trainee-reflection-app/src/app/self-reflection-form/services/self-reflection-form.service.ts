@@ -8,7 +8,6 @@ import {CREATE_SELF_REFLECTIONS_API} from '../../_common/models/trainee-reflecti
 export class SelfReflectionFormService {
 
   constructor(private httpClient: HttpClient) {
-
   }
 
   public createSelfReflectionForm(selfReflectionForm: SelfReflectionFormModel): Observable<SelfReflectionFormModel> {
