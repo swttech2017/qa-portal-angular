@@ -25,7 +25,7 @@
   </mat-card-subtitle>
 
   <mat-card-content>
-     <app-rated-question *ngFor="let sr of selfReflectionViewModel.selfRatings"
+     <app-rated-question *ngFor="let sr of selfReflectionViewModel.selfReflectionForm.selfRatings"
                         [options]="sr.selfRatingQuestion.numOptions"
                         [questionText]="sr.selfRatingQuestion.questionText"
                         [selectedRating]="sr">
@@ -42,13 +42,13 @@
     </div>
 
     <div style="display: flex; flex-direction: column;">
-      <textarea [(ngModel)]="selfReflectionViewModel.strengthsText" style="resize: none;" rows="7" matInput
+      <textarea [(ngModel)]="selfReflectionViewModel.selfReflectionForm.strengthsText" style="resize: none;" rows="7" matInput
                 placeholder="Strengths - What went well last week"></textarea>
-      <textarea [(ngModel)]="selfReflectionViewModel.weaknessesText" style="resize: none;" rows="7" matInput
+      <textarea [(ngModel)]="selfReflectionViewModel.selfReflectionForm.weaknessesText" style="resize: none;" rows="7" matInput
                 placeholder="Weaknesses - What did not go well last week"></textarea>
-      <textarea [(ngModel)]="selfReflectionViewModel.opportunitiesText" style="resize: none;" rows="7" matInput
+      <textarea [(ngModel)]="selfReflectionViewModel.selfReflectionForm.opportunitiesText" style="resize: none;" rows="7" matInput
                 placeholder="Opportunities - What could you do in the future to improve your strengths"></textarea>
-      <textarea [(ngModel)]="selfReflectionViewModel.threatsText" style="resize: none;" rows="7" matInput
+      <textarea [(ngModel)]="selfReflectionViewModel.selfReflectionForm.threatsText" style="resize: none;" rows="7" matInput
                 placeholder="Threats - The issues you need to avoid in the future to minimise your weaknesses"></textarea>
     </div>
   </mat-card-content>
