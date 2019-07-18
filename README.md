@@ -22,7 +22,7 @@ The projects directory contains the following applications
 
 **trainee-reflection-app** - Application for creating, submitting and viewing Trainee Self reflection forms
 
-The other applications in the projects folder currently have no functionality, but have been added to demonstrate navigation between the various portal applications and the configuration to include an application to the portal.
+The other applications in the projects folder currently have no functionality, but have been added to demonstrate navigation between the various portal applications and the configuration to include an application in the portal.
 
 
 ## Developer Guide
