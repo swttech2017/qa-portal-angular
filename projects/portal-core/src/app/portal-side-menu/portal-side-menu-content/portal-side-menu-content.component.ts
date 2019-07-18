@@ -24,8 +24,6 @@ export class PortalSideMenuContentComponent implements OnInit, OnDestroy {
     this.applicationSelectionSubscription
       = this.applicationSelectionService.getSelectedApplication$()
                                                   .subscribe(app => {
-                                                    console.log('Got selected app ');
-                                                    console.log(app);
                                                     this.selectedApplication = app;
                                                   });
   }
@@ -37,5 +35,9 @@ export class PortalSideMenuContentComponent implements OnInit, OnDestroy {
   toggleDrawer() {
     this.opened = !this.opened;
     this.openedDrawerEmmiter.emit(this.opened);
+  }
+
+  errorApp(): boolean {
+    return this.selectedApplication.url === '/qa/portal/error';
   }
 }

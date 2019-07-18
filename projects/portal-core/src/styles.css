@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~ngx-toastr/toastr.css';
 
 /* for sidenav to take a whole page */
 html, body {
@@ -23,6 +24,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 100px;
 }
 
+.mat-raised-button {
+  background-color: #0060B9;
+  color: white;
+  width: 100px;
+}
+
 .portal-base-style {
   border-color: lightgrey;
   border-width: 2px;
@@ -38,4 +45,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   line-height: 32px;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: #fff;
+}
+
+.qa-app-title {
+  justify-content: center;
+  text-align: center;
+  background-color: #0060B9;
+  color: white;
+  margin-bottom: 10px;
+  width: 100%;
 }

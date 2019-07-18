@@ -5,7 +5,7 @@
 </div>
 
 <div class="side-menu-panel" >
-  <div class="side-menu-title">
+  <div class="side-menu-title" *ngIf="!errorApp()">
     {{selectedApplication.name}}
   </div>
   <br>

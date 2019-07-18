@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {Application} from '../models/application';
 import {Observable, Subject} from 'rxjs';
 
-
 @Injectable()
 export class ApplicationSelectionService {
 

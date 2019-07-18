@@ -5,13 +5,9 @@ import {TraineeFeedbackSharedModule} from '../../../trainee-feedback-app/src/app
 import {TraineeReflectionSharedModule} from '../../../trainee-reflection-app/src/app/app.module';
 import {TrainerSchedulingSharedModule} from '../../../trainer-scheduling-app/src/app/app.module';
 import {ApartmentMngmtSharedModule} from '../../../apartment-mngmt-app/src/app/app.module';
-import {ErrorViewComponent} from './error-view/error-view.component';
+import {QaErrorSharedModule} from '../../../qa-error-app/src/app/app.module';
 
 const routes: Routes = [
-  {
-    path: 'qa/portal/home',
-    loadChildren: () => PortalHomeSharedModule
-  },
   {
     path: 'qa/portal/training',
     loadChildren: () => TraineeFeedbackSharedModule
@@ -29,17 +25,24 @@ const routes: Routes = [
     loadChildren: () => ApartmentMngmtSharedModule
   },
   {
+    path: 'qa/portal',
+    loadChildren: () => QaErrorSharedModule
+  },
+  {
+    path: 'qa/portal/home',
+    loadChildren: () => PortalHomeSharedModule
+  },
+  {
     path: 'qa',
     children: [
-      {path: '**', redirectTo: '/qa/portal/home/view'}
+      {path: '**', redirectTo: '/qa/portal/home'}
     ]
   },
   {
-    path: '', redirectTo: '/qa/portal/home/view', pathMatch: 'prefix'
-  },
-  {
-    path: '**',
-    component: ErrorViewComponent
+    path: '', redirectTo: '/qa/portal/home', pathMatch: 'full'
+  // },
+  // {
+  //   path: '**', redirectTo: '/qa/portal/home', pathMatch: 'full'
   }
 ];
 

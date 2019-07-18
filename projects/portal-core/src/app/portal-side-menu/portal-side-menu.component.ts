@@ -15,7 +15,6 @@ export class PortalSideMenuComponent implements OnInit {
   }
 
   setOpened(value: boolean) {
-    console.log('Value is ' + value);
     this.openedDrawer = value;
   }
 }

@@ -1,18 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Event, NavigationStart, Router} from '@angular/router';
 import {MenuService} from './_common/services/menu-service';
 import {Subscription} from 'rxjs';
 import {ApplicationSelectionService} from './_common/services/application-selection.service';
+import {Application} from './_common/models/application';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   portalApplications: any[] = [];
 
-  title = 'portal-core';
+  errorApp: Application;
 
   currentUrl: string;
 
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit {
               private router: Router,
               private applicationSelectionService: ApplicationSelectionService) {
 
-    router.events.subscribe( (event: Event) => {
+    router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.currentUrl = event.url;
         this.setSelectedApplication(event.url);
@@ -31,34 +32,45 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('In ngOnInit');
+    this.errorApp = this.getErrorApplication();
+
     this.navMenuSubscription = this.menuService.getPortalMenu()
       .subscribe((response) => {
-          console.log('Got portal applications from service');
           this.portalApplications = response;
-          console.log('Portal Applications ' + this.portalApplications);
           this.setSelectedApplication(this.currentUrl);
         }
       );
   }
 
+  ngOnDestroy(): void {
+    this.navMenuSubscription.unsubscribe();
+  }
+
   private setSelectedApplication(currUrl: string): void {
-    console.log('Setting selected application for curr url ' + currUrl);
     let appSelected = false;
     this.portalApplications.forEach((pa) => {
       pa.applications.forEach(a => {
-        console.log('App url ' + a.url);
-        if (currUrl.startsWith(a.url)) {
-          console.log('Current App url ' + a.url);
+        if (currUrl.startsWith(a.url) && a.url !== '/qa/portal' && !appSelected) {
           this.applicationSelectionService.setSelectedApplication(a);
           appSelected = true;
         }
       });
-
-      // Set the selected application to the home application
-      if (!appSelected && currUrl.startsWith('/qa')) {
-        this.applicationSelectionService.setSelectedApplication(this.portalApplications[0].applications[0]);
-      }
     });
+
+    // Set the selected application to the home application
+    if (!appSelected &&
+      this.portalApplications.length > 0 &&
+      !currUrl.startsWith('/qa/portal/error')) {
+      this.applicationSelectionService.setSelectedApplication(this.portalApplications[0].applications[0]);
+    } else if (currUrl.startsWith('/qa/portal/error')) {
+      this.applicationSelectionService.setSelectedApplication(this.errorApp);
+    }
+  }
+
+  private getErrorApplication(): Application {
+    const errorApp = new Application();
+    errorApp.url = '/qa/portal/error';
+    return errorApp;
   }
 }
+

@@ -1,4 +1,4 @@
-import {NgModule, APP_INITIALIZER} from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -9,15 +9,16 @@ import {PortalSideMenuComponent} from './portal-side-menu/portal-side-menu.compo
 import {PortalSideMenuContentComponent} from './portal-side-menu/portal-side-menu-content/portal-side-menu-content.component';
 import {ApplicationSelectionService} from './_common/services/application-selection.service';
 import {PortalFooterComponent} from './portal-footer/portal-footer.component';
-import {ErrorViewComponent} from './error-view/error-view.component';
 import {PortalHomeSharedModule} from '../../../portal-home/src/app/app.module';
 import {ApartmentMngmtSharedModule} from '../../../apartment-mngmt-app/src/app/app.module';
 import {TraineeFeedbackSharedModule} from '../../../trainee-feedback-app/src/app/app.module';
 import {TraineeReflectionSharedModule} from '../../../trainee-reflection-app/src/app/app.module';
 import {TrainerSchedulingSharedModule} from '../../../trainer-scheduling-app/src/app/app.module';
-import {BrowserModule} from '@angular/platform-browser';
-import {KeycloakService, KeycloakAngularModule} from 'keycloak-angular';
+import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
+import {QaErrorHandlerService} from './_common/services/qa-error-handler.service';
+import {QaErrorSharedModule} from '../../../qa-error-app/src/app/app.module';
 import {initializer} from '../../../../app-init';
+import {QaToastrService} from './_common/services/qa-toastr.service';
 
 @NgModule({
   declarations: [
@@ -25,24 +26,25 @@ import {initializer} from '../../../../app-init';
     PortalHeaderComponent,
     PortalSideMenuComponent,
     PortalSideMenuContentComponent,
-    PortalFooterComponent,
-    ErrorViewComponent
+    PortalFooterComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
     QaCommonModule,
+    AppRoutingModule,
     PortalHomeSharedModule.forRoot(),
     ApartmentMngmtSharedModule.forRoot(),
     TraineeFeedbackSharedModule.forRoot(),
     TraineeReflectionSharedModule.forRoot(),
     TrainerSchedulingSharedModule.forRoot(),
+    QaErrorSharedModule.forRoot(),
     HttpClientModule,
     KeycloakAngularModule
   ],
   providers: [
     MenuService,
     ApplicationSelectionService,
+    QaErrorHandlerService,
+    QaToastrService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializer,

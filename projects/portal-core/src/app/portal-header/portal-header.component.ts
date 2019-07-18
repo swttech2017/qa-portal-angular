@@ -40,6 +40,10 @@ export class PortalHeaderComponent implements OnInit, OnDestroy {
     this.applicationSelectionService.setSelectedApplication(appl);
   }
 
+  getAppHome(appUrl: string) {
+    return appUrl + '/home';
+  }
+
   logout() {
     this.keycloak.logout();
   }
