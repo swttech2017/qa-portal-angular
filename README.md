@@ -45,7 +45,7 @@ Once the user has entered their username and password, they are authenticated by
 
 The angular-keycloak adapter by default provides an Http interceptor that will add the JWT as an Authorization header to any Http requests sent from the angular application. This behaviour can be disabled for specific urls if necessary.
 
-STILL TO BE DEVELOPED - A user could enter a url into the browser address bar that they do not have sufficient privileges to access. In order to prevent this, we need to implement an Angular Guard and configure this to each of the routes in our application. The Guard will be invoked before the route is activated and the will prevent unauthorized access.
+**STILL TO BE DEVELOPED** - A user could enter a url into the browser address bar that they do not have sufficient privileges to access. In order to prevent this, we need to implement an Angular Guard and configure this to each of the routes in our application. The Guard will be invoked before the route is activated to prevent unauthorized access.
 
 
 #### Portal Navigation
