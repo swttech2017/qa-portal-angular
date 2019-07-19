@@ -22,7 +22,6 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(private menuService: MenuService,
               private router: Router,
               private applicationSelectionService: ApplicationSelectionService) {
-
     router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.currentUrl = event.url;

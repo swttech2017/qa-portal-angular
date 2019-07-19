@@ -34,10 +34,6 @@ export class PortalHeaderComponent implements OnInit, OnDestroy {
     this.navMenuSubscription.unsubscribe();
   }
 
-  setApplication(appl: Application) {
-    this.applicationSelectionService.setSelectedApplication(appl);
-  }
-
   getAppHome(appUrl: string) {
     return appUrl + '/home';
   }
