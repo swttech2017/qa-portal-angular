@@ -191,7 +191,40 @@ models<br>
 services<br>
 validators<br>
 
-c) 
+
+#### Component Guidelines
+
+When developing a {compname}.component.ts the following are useful guidelines to follow
+
+a) No manipulation of DOM elements - Any DOM updates should occur through the binding to the directives in the {compname}.component.html file
+
+b) All data required by this component view should be contained in a view model class located in the ./models folder. This has the advantage of simplicity, but also allows us to easily store a components "state" in session or local storage if required.
+
+c) Any Http calls should be performed in a service class (in the ./services folder), and the component should use the service class to call REST services. By doing this, the mapping of data returned from the service into a format that can be added to our view model, can be done outside the component. If this is all done in the component it can become bloated and difficult to maintain and test.
+
+d) Error handling needs to be included for all service calls. This should be a simple addition of an error function, in the subscription to the service, and delegate the error handling to the QaErrorHandlerService.
+
+e) Generally a component will have to retrieve some data to prepopulate UI components. This functionality should be added to the ngOnInit method, with the component implementing the OnInit interface
+
+f) For scenarios as described in e) where data is being loaded asynchronously it can be useful to add a spinner to the UI. The boolean to control display of the spinner can be defined outside of the view model, and should be set to false as soon as all data has bee loaded. See self-reflection-history.component.ts (and html) for an example.
+
+g) Any validation required for the component should be placed in a separate validate class, which should be injected into the component. Again this is to separate functionality and prevent the component from getting bloated and difficult to maintain and test.
+ 
+ 
+#### Service Guidelines
+
+a) Where to put the service code
+
+Services that can be used by all Portal applications should be defined in the portal-core project in the src/app/_common/services folder.
+
+Services that are used in a specific application, but by multiple components in that application should be placed in the projects/{appname}/src/app/_common/services folder.
+
+Services that used only in a specific component should be placed in the projects/{appname}/src/app/{compname}/services folder.
+
+b) Each service class should be decorated with the @Injectable annotation. This ensures that dependencies can be injected into this service. If this annotation is not specified, then any dependencies (e.g. HttpClient) will fail to be injected when the service is instantiated.
+
+c) For communication between unrelated components (i.e. they don't have a parent child relationship), services can be used along with subscriptions to rxjs Subjects (or BejaviourSubjects). See the ApplicationSelectionService class in the portal-core application for an example.
+
 
 ## Building and Running Portal
 
