@@ -24,6 +24,7 @@ const routes: Routes = [
     path: 'qa/portal/hr',
     loadChildren: () => ApartmentMngmtSharedModule
   },
+  // Add routes for new application here
   {
     path: 'qa/portal',
     loadChildren: () => QaErrorSharedModule
