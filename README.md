@@ -2,7 +2,7 @@
 
 ## Overview
 
-The projects in this repository provide the UI components of the QA Portal application. At the top level is an angular workspace containing each of the applications that are part of the QA Portal. These applications are all configured from the angular.json file defined by the workspace.
+The projects in this repository provide the UI components of the QA Portal application. At the top level is an angular workspace containing each of the applications that are part of the QA Portal. These applications are all configured from the angular.json file defined in the workspace.
 
 The portal applications are located in the projects folder of the workspace. Any new applications to be added to the portal should be added using the following command from the root folder of the workspace.
 
@@ -14,7 +14,7 @@ The projects directory contains the following applications:
 
 **portal-core** - The core application of the Portal. This manages the main navigation toolbar, sidebar menu, error handling and security 
 
-**qa-common** - For common components reused across multiple portal applications. Does not have routing configured
+**qa-common** - For common UI components reused across multiple portal applications. Does not have routing configured
 
 **qa-error-app** - Provides error components and their routing. These error routes will be initiated from the central error handler service in the portal-core application
 
@@ -86,11 +86,11 @@ See rated-question component in the QA Common application for an example of a re
 
 For an example of using one of these components see the self-reflection-form component of the Trainee Reflection application. 
 
-### QA Error App Application
+### QA Error Application
 
 The Error application provides a basic error component and it's associated routing. The routing to this component should only be triggered through the QaErrorHandlerService in the portal-core application.
 
-This application is still under development
+This application is still under development.
 
  
 ### Portal Home Application
@@ -98,7 +98,7 @@ This application is still under development
 This should be the default application when a user logs into the QA Portal. This application is still under development. 
 
 
-### Trainee Reflection App Application
+### Trainee Reflection Application
 
 This has been developed to provide guidance for the future development of Portal applications. The application has basic functionality, but has examples of the following
 
@@ -121,17 +121,19 @@ Routes are defined in the app-routing.module.ts, as per the angular standard con
 
 ### Adding a new application to the Portal
 
-Replace {appname} and {AppName}SharedModule with the actual name of your application and module
+NOTE: Replace any references to {appname} and {AppName}SharedModule with the actual name of your application and module
 
 a) Generate a new application in the QA Portal workspace. In the top level folder run the following command
 
 ng generate application {appname} --routing
 
-This will create a new Angular application in the projects folder, and the angular.json file will contain the configuration for the new application
+This will create a new Angular application with routing in the projects folder, and its configuration will be added to the angular.json file.
 
 b) Create a new module with a name specific to this application, and return an empty providers array, as the services in this application should only be accessed from components within this application. 
 
-In the projects/{appname}/src/app folder, edit the app.module.ts file. Add the following to the end of the file
+To achieve this, edit the app.module.ts file in the projects/{appname}/src/app folder as follows:
+
+Add the following to the end of the file
 
 @NgModule({})<br>
 export class {AppName}SharedModule {<br>
@@ -143,16 +145,18 @@ export class {AppName}SharedModule {<br>
   }<br>
 }<br>
 
-c) Make your new application module available in the portal-core application. In the projects/portal-core/src/app folder, edit the app.module.ts file, adding this new module at the end of the list of imports
+c) Add the QACommonModule to your new application by adding it to the imports in the app.module.ts file.
 
-  imports: [
+d) Make your new application module available in the portal-core application. In the projects/portal-core/src/app folder, edit the app.module.ts file, adding this new module at the end of the list of imports
+
+  imports: [<br>
     QaCommonModule,<br>
     AppRoutingModule,<br>
     .......,<br>
     {AppName}SharedModule
     
 
-d) Make the routes in your new application available from portal-core application. In the projects/portal-core/src/app folder, edit the app-routing.module.ts file, adding a new route on the line before the comment
+e) Make the routes in your new application available from portal-core application. In the projects/portal-core/src/app folder, edit the app-routing.module.ts file, adding a new route on the line before the comment
 
 // Add routes for new application here
 
@@ -165,7 +169,7 @@ loadChildren: () => {AppName}SharedModule<br>
 
 where {department} should be replaced by training, hr, etc
 
-e) Create application folder structure 
+f) Create application folder structure 
 
 Under the application root folder (projects/{appname}) the following structure is recommended for code that will be used by multiple components in the application
 
@@ -189,7 +193,7 @@ validators<br>
 
 c) 
 
-## Build and Running Portal
+## Building and Running Portal
 
 ### Pre-Requisites
 
